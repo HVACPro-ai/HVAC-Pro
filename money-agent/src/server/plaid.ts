@@ -1,5 +1,5 @@
 import { env } from "@/env";
-import { Configuration, PlaidApi, PlaidEnvironments, Products } from "plaid";
+import { Configuration, PlaidApi, PlaidEnvironments, Products, CountryCode } from "plaid";
 import { prisma } from "@/server/db";
 import crypto from "crypto";
 
@@ -41,7 +41,7 @@ export async function createLinkToken(userId: string, _householdId: string) {
     user: { client_user_id: userId },
     client_name: "Money Agent",
     products: env.PLAID_PRODUCTS.split(",") as Products[],
-    country_codes: ["US"],
+    country_codes: [CountryCode.Us],
     language: "en",
     redirect_uri: env.PLAID_REDIRECT_URI,
   });

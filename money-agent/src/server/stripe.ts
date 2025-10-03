@@ -2,7 +2,7 @@ import Stripe from "stripe";
 import { env } from "@/env";
 import { prisma } from "@/server/db";
 
-export const stripe = new Stripe(env.STRIPE_SECRET_KEY, { apiVersion: "2024-06-20" });
+export const stripe = new Stripe(env.STRIPE_SECRET_KEY, { apiVersion: "2025-09-30.clover" });
 
 export async function ensureCustomer(userId: string, email: string | null | undefined) {
   const user = await prisma.user.findUnique({ where: { id: userId } });

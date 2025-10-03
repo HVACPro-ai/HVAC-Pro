@@ -14,7 +14,7 @@ export const env = createEnv({
     PLAID_SECRET: z.string().min(1),
     PLAID_ENV: z.enum(["sandbox", "development", "production"]).default("sandbox"),
     PLAID_PRODUCTS: z.string().default("transactions"),
-    PLAID_REDIRECT_URI: z.string().url().optional(),
+    PLAID_REDIRECT_URI: z.string().url().optional().or(z.literal("")),
     PLAID_WEBHOOK_SECRET: z.string().optional(),
 
     STRIPE_SECRET_KEY: z.string().min(1),
